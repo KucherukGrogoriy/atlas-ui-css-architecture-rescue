@@ -1,15 +1,42 @@
 Компонент;Вариант;Состояние;Тема;Ширина_px;Ожидаемое поведение;Факт_до;Факт_после;Статус_OK_FAIL;Доказательство
-button;primary;default;light;1440;;;;;
-button;primary;focus-visible;dark;375;;;;;
-button;danger;hover;light;768;;;;;
-button;secondary;disabled;dark;320;;;;;
-field;email;untouched-invalid;light;1440;;;;;
-field;email;invalid-after-blur;dark;375;;;;;
-card;featured;long-text;light;320;;;;;
-card;default;nested-alert;dark;375;;;;;
-tag;danger;static;light;375;;;;;
-alert;warning;dark-contrast;dark;375;;;;;
-switch;enabled;keyboard-space;light;375;;;;;
-switch;disabled;tab-skip;dark;375;;;;;
-dialog;open;modal-focus;light;1024;;;;;
-dialog;closed;escape-focus-return;dark;375;;;;;
+button;primary;default;light;1440;Фон #3659d9, скругленные углы;Фон #2939a8, острые углы;Фон из токенов, скругления;OK;Скриншот 1440 light
+button;primary;focus-visible;dark;375;Видимая рамка фокуса (outline);Рамки нет;Рамка 2px var(--color-accent);OK;Скриншот фокуса
+button;danger;hover;light;768;Фон темнеет, текст белый;Фон #971d2a (!important);Фон var(--color-danger);OK;DevTools hover
+button;secondary;disabled;dark;320;Прозрачность 0.45, нет клика;Клик работает (ошибка);Не кликабельно;OK;Клик мышью
+field;email;untouched-invalid;light;1440;Нет красной рамки до ввода;Красная рамка (aria-invalid=true);Рамка серая;OK;DevTools при загрузке
+field;email;invalid-after-blur;dark;375;Красная рамка, есть aria-invalid;Срабатывает сразу;Только после blur/submit;OK;Ввод неверных данных
+card;featured;long-text;light;320;Текст переносится, нет скролла;Горизонтальный скролл (min-width 22rem);Текст переносится (min-width 0);OK;DevTools 320px
+card;default;nested-alert;dark;375;Вложенный alert не ломает карточку;Alert перекрашивал карточку;Изолировано;OK;Визуальная проверка
+tag;danger;static;light;375;Не интерактивен (нет курсора);Курсор pointer (hover);Нет hover;OK;Наведение мыши
+alert;warning;dark-contrast;dark;375;Читаемый текст и фон;Белый фон (не адаптирован);Темный фон, светлый текст;OK;Скриншот Dark Mode
+switch;enabled;keyboard-space;light;375;Переключается по Space;Не доступен с клавиатуры;Доступен, есть focus-visible;OK;Нажатие Tab+Space
+switch;disabled;tab-skip;dark;375;Пропускается при Tab;Фокус попадает (display:none);Пропускается (disabled);OK;Нажатие Tab
+dialog;open;modal-focus;light;1024;Фон заблокирован, Tab внутри;Фокус уходит на страницу (show);Модальный режим (showModal);OK;Нажатие Tab
+dialog;closed;escape-focus-return;dark;375;Закрывается по Esc, фокус возвращается;Не закрывался;Esc работает, фокус возвращается;OK;Нажатие Esc
+
+button;ghost;hover;light;768;Фон меняется на var(--color-surface-alt);Цвет не менялся;Фон меняется;OK;DevTools
+button;primary;active;dark;1024;Кнопка нажимается (translateY 0);Не было active;Работает;OK;Клик мышью
+button;secondary;focus-visible;light;1920;Видимая синяя рамка;Рамки не было;Рамка есть;OK;Tab
+button;danger;default;dark;375;Красный фон из токенов;Жесткий #b42336;var(--color-danger);OK;Визуал
+field;name;valid;light;768;Зеленая/серая рамка, нет ошибки;Ошибка не исчезала;Ошибка исчезает;OK;Ввод верных данных
+field;name;focus-visible;dark;1024;Рамка фокуса на инпуте;outline: none;outline: 2px solid;OK;Tab
+field;email;submit-empty;light;375;Ошибка появляется по кнопке;Сразу ошибка;Только по кнопке;OK;Клик по "Проверить"
+card;default;default;light;1440;Ровная сетка, тени;Ломалась сетка;Сетка ровная;OK;Визуал
+card;featured;nested-alert;dark;768;Текст читается, фон темный;Белый фон;Темный фон;OK;Визуал
+card;nested;long-text;light;320;Нет горизонтального скролла;Скролл был;Скролла нет;OK;320px
+tag;success;static;light;768;Зеленый бейдж;Без изменений;Зеленый;OK;Визуал
+tag;warning;static;dark;375;Желтый бейдж читается;Без изменений;Желтый;OK;Визуал
+alert;info;dismiss;light;1024;Закрывается по крестику;Работало;Работает;OK;Клик
+alert;success;restore;dark;375;Восстанавливается кнопкой;Не восстанавливался;Восстанавливается;OK;Клик
+alert;danger;default;light;768;Красный фон, белый текст;Ярко-красный (утечка);Из токенов;OK;Визуал
+switch;off;click;light;1440;Переключается мышью;Работало;Работает;OK;Клик
+switch;on;click;dark;768;Переключается мышью;Работало;Работает;OK;Клик
+switch;disabled;focus-visible;light;320;Фокус не ставится;Фокус ставился;Пропуск;OK;Tab
+dialog;open;backdrop-blur;light;768;Фон затемнен;Без затемнения;Есть backdrop;OK;Визуал
+dialog;open;close-btn;dark;1024;Закрывается по крестику;Работало;Работает;OK;Клик
+layout;app;320px;light;320;Нет скролла страницы;Скролл был;Нет скролла;OK;DevTools
+layout;app;1920px;dark;1920;Контент по центру;Без изменений;По центру;OK;Визуал
+legacy;widget;isolated;light;768;Стили не протекают наружу;Протекали;Изолировано;OK;DevTools
+legacy;widget;dark;dark;375;Темный фон виджета;Белый фон;Темный;OK;Визуал
+legacy;action;hover;light;1024;Кнопка виджета работает;Работало;Работает;OK;Клик
+legacy;zone;theme;dark;1440;Общая тема не ломается;Ломалась;Не ломается;OK;Визуал

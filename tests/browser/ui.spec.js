@@ -57,3 +57,16 @@ test('alert is dismissible and restore action works', async ({ page }) => {
   await page.locator('#restore-alerts').click();
   await expect(page.locator('.alerts-stack > .ui-alert')).toHaveCount(4);
 });
+
+test('Модальное окно блокирует фон (фокус не уходит наружу)', async ({ page }) => {
+  await page.goto('http://127.0.0.1:5173');
+  await page.locator('#open-dialog').click();
+  await expect(page.locator('#settings-dialog')).toBeVisible();
+
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Tab');
+
+  const focusedElement = await page.evaluate(() => document.activeElement.id);
+  expect(focusedElement).not.toBe('theme-toggle');
+});
